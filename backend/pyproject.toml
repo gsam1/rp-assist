@@ -1,0 +1,29 @@
+[project]
+name = "rpg-assistant-backend"
+version = "0.1.0"
+description = "RPG Assistant backend - RAG-powered TTRPG content assistant"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi==0.104.1",
+    "uvicorn[standard]==0.24.0",
+    "python-multipart==0.0.6",
+    "websockets==12.0",
+    "pydantic==2.5.0",
+    "pydantic-settings==2.1.0",
+    "python-dotenv==1.0.0",
+    "toml==0.10.2",
+    "PyPDF2==3.0.1",
+    "openai==1.3.5",
+    "anthropic==0.7.0",
+    "google-generativeai==0.3.0",
+    "faiss-cpu==1.7.4",
+    "numpy==1.26.2",
+    "psycopg2-binary==2.9.9",
+    "pgvector==0.2.3",
+    "httpx==0.25.0",
+    "aiofiles==23.2.1",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

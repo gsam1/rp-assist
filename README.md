@@ -222,7 +222,7 @@ make logs
 make validate-config
 
 # Check if PostgreSQL is running
-docker-compose ps
+docker compose ps
 ```
 
 ### LLM provider not reachable
@@ -234,8 +234,8 @@ docker-compose ps
 ### Vector store errors
 
 **For PGVector:**
-- Ensure PostgreSQL is running: `docker-compose ps`
-- Check PostgreSQL logs: `docker-compose logs postgres`
+- Ensure PostgreSQL is running: `docker compose ps`
+- Check PostgreSQL logs: `docker compose logs postgres`
 
 **For FAISS:**
 - Check disk space in `data/vectordb/`
@@ -243,7 +243,7 @@ docker-compose ps
 
 ### Frontend can't connect to backend
 
-1. Check backend is running: `docker-compose ps`
+1. Check backend is running: `docker compose ps`
 2. Verify ports are not in use
 3. Check browser console for errors
 

@@ -15,36 +15,36 @@ help:
 	@echo "  make validate-config- Validate configuration files"
 
 start:
-	docker-compose up -d
+	docker compose up -d
 
 stop:
-	docker-compose down
+	docker compose down
 
 restart:
-	docker-compose restart
+	docker compose restart
 
 build:
-	docker-compose build
+	docker compose build
 
 logs:
-	docker-compose logs -f
+	docker compose logs -f
 
 clean:
-	docker-compose down -v
+	docker compose down -v
 	rm -rf data/vectordb/*
 	rm -rf data/metadata/*
 
 reindex:
-	docker-compose exec backend python -m app.cli reindex --full
+	docker compose exec backend python -m app.cli reindex --full
 
 index-new:
-	docker-compose exec backend python -m app.cli reindex --incremental
+	docker compose exec backend python -m app.cli reindex --incremental
 
 shell-backend:
-	docker-compose exec backend /bin/bash
+	docker compose exec backend /bin/bash
 
 shell-frontend:
-	docker-compose exec frontend /bin/sh
+	docker compose exec frontend /bin/sh
 
 validate-config:
-	docker-compose exec backend python -m app.cli validate-config
+	docker compose exec backend python -m app.cli validate-config

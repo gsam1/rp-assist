@@ -2,15 +2,22 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# Install system dependencies
+# Install system dependencies and uv
 RUN apt-get update && apt-get install -y \
     gcc \
     postgresql-client \
-    && rm -rf /var/lib/apt/lists/*
+    curl \
+    && rm -rf /var/lib/apt/lists/* \
+    && curl -LsSf https://astral.sh/uv/install.sh | sh
 
-# Copy requirements and install Python dependencies
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+# Add uv to PATH
+ENV PATH="/root/.cargo/bin:$PATH"
+
+# Copy dependency files
+COPY pyproject.toml .
+
+# Install Python dependencies using uv
+RUN uv pip install --system -r pyproject.toml
 
 # Copy application code
 COPY . .
