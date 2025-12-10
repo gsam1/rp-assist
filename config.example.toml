@@ -1,0 +1,80 @@
+# RPG Assistant Configuration File
+# Copy this file to config.toml and adjust values as needed
+
+[app]
+host = "0.0.0.0"
+port = 8000
+max_file_size_mb = 100  # Maximum file upload size (0 for unlimited)
+log_level = "INFO"  # DEBUG, INFO, WARNING, ERROR
+
+[llm]
+default_provider = "openai"  # openai, anthropic, google, local
+temperature = 0.7
+max_tokens = 4096
+
+[llm.context]
+max_messages_before_summary = 20  # Keep last N messages in full before summarizing
+context_window_size = 128000      # Total tokens available for context
+
+# OpenAI Configuration
+[providers.openai]
+model = "gpt-4o"
+context_window = 128000
+temperature = 0.7
+max_tokens = 4096
+top_p = 1.0
+
+# Anthropic Configuration
+[providers.anthropic]
+model = "claude-sonnet-4-20250514"
+context_window = 200000
+temperature = 0.7
+max_tokens = 4096
+top_p = 1.0
+
+# Google Gemini Configuration
+[providers.google]
+model = "gemini-2.0-flash-exp"
+context_window = 1000000
+temperature = 0.7
+max_tokens = 4096
+top_p = 1.0
+
+# Local LLM Configuration (OpenAI-compatible endpoint)
+[providers.local]
+endpoint = "http://localhost:11434/v1"  # e.g., Ollama
+model = "llama3.1:8b"
+context_window = 8192
+temperature = 0.7
+max_tokens = 2048
+
+# Vector Store Configuration
+[vectorstore]
+type = "pgvector"  # faiss or pgvector
+chunk_size = 1000
+chunk_overlap = 0.2  # 20% overlap between chunks
+top_k = 5  # Number of chunks to retrieve for RAG
+
+# Embedding Configuration
+[embedding]
+model = "text-embedding-3-large"  # Model name for embeddings
+provider = "openai"  # Which provider to use for embeddings
+
+# Image Generation Configuration
+[images]
+size = "1024x1024"
+format = "jpeg"
+save_directory = "data/images"
+provider = "openai"  # Which LLM provider handles image generation
+model = "dall-e-3"  # Model for image generation
+
+# Document Management Configuration
+[documents]
+upload_directory = "data/uploads"
+notes_directory = "data/notes"
+metadata_file = "data/metadata/index_metadata.json"
+
+# Conversation Configuration
+[conversations]
+save_directory = "data/conversations"
+auto_save_on_exit = true

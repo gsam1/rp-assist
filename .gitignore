@@ -205,3 +205,15 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# RPG Assistant specific
+config.toml
+data/
+logs/
+*.db
+*.index
+*.pkl
+node_modules/
+frontend/build/
+frontend/.svelte-kit/
+.DS_Store
